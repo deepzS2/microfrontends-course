@@ -3,7 +3,7 @@ name: Deploy Container
 on:
   push:
     branches:
-      - "master"
+      - "main"
     paths:
       - "container/**"
 
