@@ -21,12 +21,15 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: latest
+          cache: "pnpm"
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
           version: latest
-          run_install: true
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Build project
         run: pnpm build
