@@ -17,8 +17,7 @@ export default function AuthApp() {
   useEffect(() => {
     const marketingNavigationEventHandler = (event) => {
       const pathname = event.detail
-      const newPathname = `${pathBasename}${pathname}`
-      
+      const newPathname = `${pathBasename}${pathname.replace(pathBasename, '')}`
       if (newPathname === location.pathname) {
         return
       }
