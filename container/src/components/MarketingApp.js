@@ -13,7 +13,7 @@ export default function MarketingApp() {
   const location = useLocation()
 
   useEffect(() => {
-    const app1NavigationEventHandler = (event) => {
+    const marketingNavigationEventHandler = (event) => {
       const pathname = event.detail
       const newPathname = `${pathBasename}${pathname}`
 
@@ -24,12 +24,12 @@ export default function MarketingApp() {
       navigate(newPathname)
     }
 
-    window.addEventListener("[marketing] navigated", app1NavigationEventHandler);
+    window.addEventListener("[marketing] navigated", marketingNavigationEventHandler);
 
     return () => {
       window.removeEventListener(
         "[marketing] navigated",
-        app1NavigationEventHandler
+        marketingNavigationEventHandler
       )
     }
   }, [location])
