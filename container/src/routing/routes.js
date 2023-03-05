@@ -12,6 +12,7 @@ ClassNameGenerator.configure((componentName) => `co-${componentName}`)
 
 const MarketingAppLazy = lazy(() => import("../components/MarketingApp"));
 const AuthAppLazy = lazy(() => import("../components/AuthApp"));
+const DashboardAppLazy = lazy(() => import("../components/DashboardApp"));
 
 export const routes = [
   {
@@ -41,6 +42,10 @@ export const routes = [
         path: `/${AUTH_ROUTING_PREFIX}/*`,
         element: <AuthAppLazy />,
       },
+      {
+        path: '/dashboard/*',
+        element: <DashboardAppLazy />,
+      }
     ],
   }
 ];

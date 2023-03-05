@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AppBar, Button, Toolbar, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../context/auth.context';
 
 const useStyles = makeStyles((theme) => ({
@@ -54,7 +54,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
   const { isSignedIn, setIsSignedIn } = useAuthContext()
-  const classes = useStyles();
+  const navigate = useNavigate()
+  const classes = useStyles()
+
+  useEffect(() => {
+    if (isSignedIn) {
+      navigate('/dashboard')
+    }
+  }, [isSignedIn])
 
   const onClick = () => {
     if (isSignedIn && setIsSignedIn) {
@@ -80,6 +87,19 @@ export default function Header() {
           >
             App
           </Typography>
+          {
+            isSignedIn && (
+              <Button
+                color="primary"
+                variant="outlined"
+                className={classes.link}
+                component={RouterLink}
+                to='/dashboard'
+              >
+                Dashboard
+              </Button>
+            )
+          }
           <Button
             color="primary"
             variant="outlined"
