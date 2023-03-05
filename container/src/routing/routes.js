@@ -4,11 +4,12 @@ import { ThemeProvider, createTheme } from '@mui/material'
 import { unstable_ClassNameGenerator as ClassNameGenerator } from '@mui/material/className'
 
 import Header from '../components/Header'
-import { MARKETING_ROUTING_PREFIX } from "./constants";
+import { AUTH_ROUTING_PREFIX, MARKETING_ROUTING_PREFIX } from "./constants";
 
 ClassNameGenerator.configure((componentName) => `co-${componentName}`)
 
 const MarketingAppLazy = lazy(() => import("../components/MarketingApp"));
+const AuthAppLazy = lazy(() => import("../components/AuthApp"));
 
 export const routes = [
   {
@@ -31,6 +32,14 @@ export const routes = [
         element: (
           <Suspense fallback="Loading Marketing...">
             <MarketingAppLazy />
+          </Suspense>
+        ),
+      },
+      {
+        path: `/${AUTH_ROUTING_PREFIX}/*`,
+        element: (
+          <Suspense fallback="Loading Auth...">
+            <AuthAppLazy />
           </Suspense>
         ),
       },
