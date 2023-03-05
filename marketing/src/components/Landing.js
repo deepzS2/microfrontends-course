@@ -6,11 +6,11 @@ import {
   CardActions, 
   CardContent, 
   CardMedia, 
-  Grid, 
   Typography, 
   Container, 
   Link as MaterialLink 
 } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
 import { makeStyles } from '@mui/styles';
 import { Link } from 'react-router-dom';
 
@@ -95,7 +95,7 @@ export default function Album() {
               short so folks don&apos;t simply skip over it entirely.
             </Typography>
             <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
+              <Grid container spacing={2} justifyContent="center">
                 <Grid item>
                   <Link to="/pricing">
                     <Button variant="contained" color="primary">

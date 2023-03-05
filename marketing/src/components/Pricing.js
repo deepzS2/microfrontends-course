@@ -6,11 +6,11 @@ import {
   CardActions, 
   CardContent, 
   CardHeader, 
-  Grid,
   Typography, 
   Container, 
   Link,
 } from '@mui/material';
+import Grid from '@mui/material/Unstable_Grid2';
 import { Star as StarIcon } from '@mui/icons-material'
 import { makeStyles } from '@mui/styles';
 import { Link as RouterLink } from 'react-router-dom';
