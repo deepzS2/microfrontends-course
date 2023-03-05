@@ -1,0 +1,1 @@
+export const MARKETING_ROUTING_PREFIX = 'marketing'

@@ -2,7 +2,9 @@ import React, { useRef, useEffect } from 'react'
 import { useLocation, useNavigate } from "react-router-dom"
 import { mount } from 'marketing/MarketingApp'
 
-const pathBasename = '/marketing'
+import { MARKETING_ROUTING_PREFIX } from '../routing/constants'
+
+const pathBasename = `/${MARKETING_ROUTING_PREFIX}`
 
 export default function MarketingApp() {
   const wrapperRef = useRef(null)
