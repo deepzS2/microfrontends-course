@@ -6,6 +6,7 @@ import { unstable_ClassNameGenerator as ClassNameGenerator } from '@mui/material
 import Header from '../components/Header'
 import Progress from "../components/Progress";
 import { AUTH_ROUTING_PREFIX, MARKETING_ROUTING_PREFIX } from "./constants";
+import { AuthContextProvider } from "../context/auth.context";
 
 ClassNameGenerator.configure((componentName) => `co-${componentName}`)
 
@@ -16,14 +17,16 @@ export const routes = [
   {
     path: '/',
     element: (
-      <ThemeProvider theme={createTheme()}>
-        <div>
-          <Header />
-          <Suspense fallback={<Progress />}>
-            <Outlet />
-          </Suspense>
-        </div>
-      </ThemeProvider>
+      <AuthContextProvider>
+        <ThemeProvider theme={createTheme()}>
+          <div>
+            <Header />
+            <Suspense fallback={<Progress />}>
+              <Outlet />
+            </Suspense>
+          </div>
+        </ThemeProvider>
+      </AuthContextProvider>
     ),
     children: [
       {

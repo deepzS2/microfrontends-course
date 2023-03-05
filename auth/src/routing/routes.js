@@ -9,7 +9,7 @@ import SignUp from '../components/Signup'
 
 ClassNameGenerator.configure((componentName) => `au-${componentName}`)
 
-export const routes = [
+export const createRoutes = (onSignIn) => [
   {
     path: '/',
     element: (
@@ -28,11 +28,11 @@ export const routes = [
       },
       {
         path: 'auth/signin',
-        element: <SignIn />
+        element: <SignIn onSignIn={onSignIn} />
       },
       {
         path: 'auth/signup',
-        element: <SignUp />
+        element: <SignUp onSignIn={onSignIn} />
       }
     ]
   }

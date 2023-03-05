@@ -3,10 +3,12 @@ import { useLocation, useNavigate } from "react-router-dom"
 import { mount } from 'auth/AuthApp'
 
 import { AUTH_ROUTING_PREFIX } from '../routing/constants'
+import { useAuthContext } from '../context/auth.context'
 
 const pathBasename = `/${AUTH_ROUTING_PREFIX}`
 
 export default function AuthApp() {
+  const { setIsSignedIn } = useAuthContext()
   const wrapperRef = useRef(null)
   const isFirstRunRef = useRef(true)
   const unmountRef = useRef(() => {})
@@ -55,7 +57,10 @@ export default function AuthApp() {
       }
 
       unmountRef.current = mount(wrapperRef.current, {
-        initialPathname: location.pathname
+        initialPathname: location.pathname,
+        onSignIn: () => {
+          setIsSignedIn(true)
+        }
       })
 
       isFirstRunRef.current = false

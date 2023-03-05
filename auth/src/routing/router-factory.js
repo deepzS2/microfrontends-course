@@ -1,7 +1,9 @@
 import { createBrowserRouter, createMemoryRouter } from "react-router-dom";
-import { routes } from "./routes";
+import { createRoutes } from "./routes";
 
-export function createRouter({ strategy, initialPathname }) {
+export function createRouter({ strategy, initialPathname, onSignIn }) {
+  const routes = createRoutes(onSignIn)
+
   if (strategy === 'browser') {
     return createBrowserRouter(routes);
   }

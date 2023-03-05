@@ -2,6 +2,7 @@ import React from 'react';
 import { AppBar, Button, Toolbar, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { Link as RouterLink } from 'react-router-dom';
+import { useAuthContext } from '../context/auth.context';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -51,12 +52,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header({ signedIn, onSignOut }) {
+export default function Header() {
+  const { isSignedIn, setIsSignedIn } = useAuthContext()
   const classes = useStyles();
 
   const onClick = () => {
-    if (signedIn && onSignOut) {
-      onSignOut();
+    if (isSignedIn && setIsSignedIn) {
+      setIsSignedIn(false);
     }
   };
 
@@ -83,10 +85,10 @@ export default function Header({ signedIn, onSignOut }) {
             variant="outlined"
             className={classes.link}
             component={RouterLink}
-            to={signedIn ? '/' : '/auth/signin'}
+            to={isSignedIn ? '/' : '/auth/signin'}
             onClick={onClick}
           >
-            {signedIn ? 'Logout' : 'Login'}
+            {isSignedIn ? 'Logout' : 'Login'}
           </Button>
         </Toolbar>
       </AppBar>

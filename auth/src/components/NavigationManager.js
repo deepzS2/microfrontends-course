@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { matchRoutes, useLocation, useNavigate } from 'react-router-dom';
 
-import { routes } from '../routing/routes';
+import { createRoutes } from '../routing/routes';
 
 export default function NavigationManager({ children }) {
   const location = useLocation()
   const navigate = useNavigate()
+  const routes = createRoutes()
 
   useEffect(() => {
     function containerNavigationHandler(event) {

@@ -4,8 +4,8 @@ import { RouterProvider } from "react-router-dom"
 
 import { createRouter } from './routing/router-factory'
 
-const mount = (el, { initialPathname, routingStrategy }) => {
-  const router = createRouter({ strategy: routingStrategy, initialPathname })
+const mount = (el, { initialPathname, routingStrategy, onSignIn }) => {
+  const router = createRouter({ strategy: routingStrategy, initialPathname, onSignIn })
   const root = createRoot(el)
 
   root.render(<RouterProvider router={router} />)
