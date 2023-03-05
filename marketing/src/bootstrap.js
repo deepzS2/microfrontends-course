@@ -1,16 +1,20 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './App'
+import { RouterProvider } from "react-router-dom"
 
-const mount = (el) => {
+import { createRouter } from './routing/router-factory'
+
+const mount = (el, { initialPathname, routingStrategy }) => {
+  const router = createRouter({ strategy: routingStrategy, initialPathname })
   const root = createRoot(el)
-  root.render(<App />)
+
+  root.render(<RouterProvider router={router} />)
 }
 
 if (process.env.NODE_ENV === "development") {
   const devRoot = document.getElementById('_marketing-dev-root')
 
-  devRoot && mount(devRoot)
+  devRoot && mount(devRoot, { routingStrategy: 'browser' })
 }
 
 export { mount }
